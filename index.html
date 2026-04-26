@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/base.css">
-<link rel="stylesheet" href="styles/sections.css?v=4">
+<link rel="stylesheet" href="styles/sections.css?v=6">
 </head>
 <body>
 
@@ -35,7 +35,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-primary" href="#check">Book a call</a>
+      <a class="btn btn-primary" href="#check" data-book-call>Book a call</a>
     </div>
   </div>
 </header>
@@ -50,7 +50,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       <h1 class="display">Clean data.<br>Clean domain.<br>Live ads.</h1>
       <p class="lead">SaveMyPixel sits between your store and Meta. Your main site stays exactly as it is. Meta sees a compliant destination and clean event data. Your pixel keeps firing. Your optimization keeps learning.</p>
       <div class="hero-cta-row">
-        <a class="btn btn-primary btn-lg" href="#check">Book a free consultation →</a>
+        <a class="btn btn-primary btn-lg" href="#check" data-book-call>Book a free consultation →</a>
       </div>
       <a class="arrow-link" href="#how" style="margin-top:-8px">or see how it works</a>
     </div>
@@ -296,7 +296,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
     <div class="ladder-foot">
       <p class="small">Not sure which level you're on?</p>
-      <a class="arrow-link" href="#check">Book a free compliance review</a>
+      <a class="arrow-link" href="#check" data-book-call>Book a free compliance review</a>
     </div>
   </div>
 </section>
@@ -892,7 +892,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
           <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Shopify or custom install</li>
           <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Email support</li>
         </ul>
-        <a class="btn btn-secondary tier-cta" href="#check">Start with Starter →</a>
+        <a class="btn btn-secondary tier-cta" href="#check" data-book-call>Start with Starter →</a>
       </div>
 
       <!-- GROWTH (featured) -->
@@ -915,7 +915,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
           <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Priority support (24hr)</li>
           <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Quarterly compliance review</li>
         </ul>
-        <a class="btn btn-primary tier-cta" href="#check">Go with Growth →</a>
+        <a class="btn btn-primary tier-cta" href="#check" data-book-call>Go with Growth →</a>
       </div>
 
       <!-- SCALE -->
@@ -937,7 +937,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
           <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dedicated Slack channel</li>
           <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>4-hour SLA</li>
         </ul>
-        <a class="btn btn-secondary tier-cta" href="#contact">Talk to us →</a>
+        <a class="btn btn-secondary tier-cta" href="#contact" data-book-call>Talk to us →</a>
       </div>
     </div>
 
@@ -1020,7 +1020,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     <p class="cta-sub">Book a free 20-minute compliance review. A member of our team will audit your domain, landing page, pixel setup, and current Meta account health. You'll walk away with a clear picture of where you stand and exactly what needs to change, whether you work with us or not.</p>
 
     <div class="cta-action">
-      <a class="btn btn-cta btn-lg" href="#book">Book a free compliance review →</a>
+      <a class="btn btn-cta btn-lg" href="#book" data-book-call>Book a free compliance review →</a>
     </div>
     <p class="cta-micro">20 minutes. No sales pressure. You'll get real answers either way.</p>
 
@@ -1046,6 +1046,112 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 </section>
 
 </main>
+
+<!-- ========== BOOKING MODAL ========== -->
+<div class="book-modal" id="bookCallModal" hidden>
+  <div class="book-backdrop" data-book-close></div>
+  <div class="book-card" role="dialog" aria-modal="true" aria-labelledby="bookCallTitle" aria-describedby="bookCallSub" tabindex="-1">
+    <button class="book-close" type="button" aria-label="Close" data-book-close>
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+        <path d="M3 3 L13 13 M13 3 L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="book-head">
+      <span class="eyebrow">Free compliance review</span>
+      <h2 class="book-title" id="bookCallTitle">Book your 20-minute call.</h2>
+      <p class="book-sub" id="bookCallSub">A real audit of your domain, landing page, and pixel setup. No sales pressure — clear answers either way.</p>
+    </div>
+
+    <form class="book-form" data-book-form novalidate>
+      <div class="book-row">
+        <div class="book-field">
+          <label class="book-label" for="bf-name">Name</label>
+          <input class="book-input" id="bf-name" name="name" type="text" required autocomplete="name" placeholder="Your full name">
+          <span class="book-error" data-error-for="name"></span>
+        </div>
+      </div>
+
+      <div class="book-row book-row--two">
+        <div class="book-field">
+          <label class="book-label" for="bf-phone">Phone</label>
+          <input class="book-input" id="bf-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+1 (555) 555-1234">
+          <span class="book-error" data-error-for="phone"></span>
+        </div>
+        <div class="book-field">
+          <label class="book-label" for="bf-email">Email</label>
+          <input class="book-input" id="bf-email" name="email" type="email" required autocomplete="email" placeholder="you@brand.com">
+          <span class="book-error" data-error-for="email"></span>
+        </div>
+      </div>
+
+      <div class="book-field">
+        <span class="book-label">Monthly revenue <span class="book-label-hint">USD</span></span>
+        <div class="book-chips" role="radiogroup" aria-label="Monthly revenue">
+          <label class="book-chip">
+            <input type="radio" name="revenue" value="0-50K" required>
+            <span>$0 – $50K</span>
+          </label>
+          <label class="book-chip">
+            <input type="radio" name="revenue" value="50-100K">
+            <span>$50K – $100K</span>
+          </label>
+          <label class="book-chip">
+            <input type="radio" name="revenue" value="100-300K">
+            <span>$100K – $300K</span>
+          </label>
+          <label class="book-chip">
+            <input type="radio" name="revenue" value="300K+">
+            <span>$300K+</span>
+          </label>
+        </div>
+        <span class="book-error" data-error-for="revenue"></span>
+      </div>
+
+      <div class="book-field">
+        <label class="book-label" for="bf-industry">Industry</label>
+        <div class="book-select-wrap">
+          <select class="book-input book-select" id="bf-industry" name="industry" required>
+            <option value="" disabled selected>Select your category</option>
+            <option value="peptides">Peptides</option>
+            <option value="glp1">GLP-1 / weight loss</option>
+            <option value="supplements">Supplements &amp; nootropics</option>
+            <option value="hormones">Hormones &amp; testosterone</option>
+            <option value="sleep">Sleep &amp; recovery</option>
+            <option value="performance">Performance &amp; fitness</option>
+            <option value="functional-nutrition">Functional nutrition</option>
+            <option value="other">Other regulated health &amp; wellness</option>
+          </select>
+          <svg class="book-select-caret" viewBox="0 0 12 8" width="12" height="8" aria-hidden="true">
+            <path d="M1 1.5 L6 6.5 L11 1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="book-error" data-error-for="industry"></span>
+      </div>
+
+      <button class="btn btn-primary btn-lg book-submit" type="submit">
+        <span class="book-submit-label">Book my compliance review →</span>
+        <span class="book-submit-spinner" aria-hidden="true"></span>
+      </button>
+
+      <p class="book-fineprint">
+        <span class="book-check" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        20-min call · No commitment · Your details aren't shared
+      </p>
+    </form>
+
+    <div class="book-success" data-book-success hidden>
+      <div class="book-success-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path d="M5 12.5 L10 17.5 L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="book-success-title">Got it. We'll be in touch.</h3>
+      <p class="book-success-sub">Our compliance team will email you within one business day with a few time options for your review call.</p>
+      <button class="btn btn-secondary" type="button" data-book-close>Close</button>
+    </div>
+  </div>
+</div>
 
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
@@ -1123,6 +1229,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <script src="scripts/tweaks.js"></script>
 <script src="scripts/faq.js"></script>
 <script src="scripts/reveal.js"></script>
+<script src="scripts/booking.js?v=4"></script>
 
 </body>
 </html>
