@@ -582,28 +582,13 @@
 
   // ─── Locale resolution ─────────────────────────────────────────────────────
   async function detectLocaleByIp() {
-    // Try ip-api.com first (more reliable, higher rate limit)
+    // Uses Vercel Edge Function — reads x-vercel-ip-country header server-side.
+    // No external API, no rate limits, works 100% on HTTPS.
     try {
-      const res = await fetch('https://ip-api.com/json/?fields=countryCode', { cache: 'no-store' });
+      const res = await fetch('/api/geo', { cache: 'no-store' });
       if (res.ok) {
         const data = await res.json();
-        const country = (data.countryCode || '').toUpperCase();
-        if (country === 'BR') return 'pt';
-        if (country === 'US') return 'en';
-        // Portuguese-speaking countries → PT
-        if (['PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL'].includes(country)) return 'pt';
-        return null;
-      }
-    } catch { /* fall through */ }
-    // Fallback: ipapi.co
-    try {
-      const res = await fetch('https://ipapi.co/json/', { cache: 'no-store' });
-      if (res.ok) {
-        const data = await res.json();
-        const country = (data.country_code || '').toUpperCase();
-        if (country === 'BR') return 'pt';
-        if (country === 'US') return 'en';
-        return null;
+        if (data.locale === 'pt' || data.locale === 'en') return data.locale;
       }
     } catch { /* ignore */ }
     return null;
