@@ -221,6 +221,15 @@
       errIndustry: 'Select your industry.',
       errGeneric: 'Something went wrong. Please try again.',
 
+      // Pricing
+      tierStarterPrice: '$149', tierGrowthPrice: '$499', tierScalePrice: '$2,000',
+      tierPricePer: '/mo',
+
+      // Testimonial names/roles
+      quote1Name: 'Marcus Reid', quote1Role: 'Founder, BioForm Labs',
+      quote2Name: 'Priya Nambiar', quote2Role: 'Head of Growth, Vitalé',
+      quote3Name: 'Daniel Souza', quote3Role: 'Founder, PeptídeosBR',
+
       // UI mocks
       mockAccDisabledTitle: 'Account Disabled',
       mockAccDisabledH: "We've disabled your ad account",
@@ -466,6 +475,15 @@
       errRevenue: 'Selecione uma faixa de faturamento.',
       errIndustry: 'Selecione seu segmento.',
       errGeneric: 'Algo deu errado. Tente novamente.',
+
+      // Pricing
+      tierStarterPrice: 'R$749', tierGrowthPrice: 'R$2.499', tierScalePrice: 'R$9.999',
+      tierPricePer: '/mês',
+
+      // Testimonial names/roles
+      quote1Name: 'Marcus Reid', quote1Role: 'Fundador, BioForm Labs',
+      quote2Name: 'Priya Nambiar', quote2Role: 'Head of Growth, Vitalé',
+      quote3Name: 'Daniel Souza', quote3Role: 'Fundador, PeptídeosBR',
 
       // UI mocks
       mockAccDisabledTitle: 'Conta Desativada',
