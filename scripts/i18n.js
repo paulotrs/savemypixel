@@ -566,6 +566,11 @@
       if (t[key] !== undefined) el.placeholder = t[key];
     });
 
+    // Swap locale-specific images
+    document.querySelectorAll('img[data-src-en]').forEach((img) => {
+      img.src = lang === 'pt' ? img.dataset.srcPt : img.dataset.srcEn;
+    });
+
     // Active flag state
     document.querySelectorAll('.lang-flag').forEach((btn) => {
       btn.classList.toggle('lang-flag--active', btn.dataset.lang === lang);
