@@ -220,6 +220,54 @@
       errRevenue: 'Pick a revenue range.',
       errIndustry: 'Select your industry.',
       errGeneric: 'Something went wrong. Please try again.',
+
+      // UI mocks
+      mockAccDisabledTitle: 'Account Disabled',
+      mockAccDisabledH: "We've disabled your ad account",
+      mockAccDisabledP1: "We reviewed your account and found that it doesn't comply with our Advertising Standards on regulated goods and restricted health claims.",
+      mockAccDisabledP2: 'This decision is final. You cannot request another review.',
+      mockAccDisabledBtn: 'Download Your Information',
+      mockAccDisabledLink: 'Read the Advertising Standards →',
+      mockPanelTitle: 'Manage data source categories',
+      mockPanelTab: 'Events Manager',
+      mockColDomain: 'Domain', mockColSource: 'Source', mockColCategory: 'Category',
+      mockWebsite: 'Website',
+      mockCatHealth: 'Health & wellness',
+      mockCatRestricted: 'Restricted goods',
+      mockRejected: 'Rejected',
+      mockReason1: 'Unacceptable supplement and testosterone-related claims.',
+      mockReason2: 'Personal attributes: references to health conditions.',
+      mockReason3: 'Prohibited products: unapproved peptides.',
+      mockChartTitle: 'Purchase events delivered to Meta',
+      mockChartRange: 'Last 30 days',
+      mockEventsDay: 'events / day',
+      mockDomainFlagged: 'domain flagged',
+      mockScanAdLabel: 'Ad assessment', mockScanFlagged: 'Flagged',
+      mockHighRisk: 'High risk', mockCriticalRisk: 'Critical risk',
+      mockBarText: 'Text', mockBarImage: 'Image', mockBarImages: 'Images',
+      mockBarPolicy: 'Policy', mockBarMarkup: 'Markup',
+      mockScanAdFoot: '3 flagged terms · 1 image issue',
+      mockScanSiteLabel: 'Site assessment', mockNonCompliant: 'Non-compliant',
+      mockScanSiteFoot: '12 flagged terms · 3 product images · schema.org claims',
+      mockCleanBefore: 'Before', mockCleanAfter: 'After',
+      mockCleanFlag1: 'Semaglutide', mockCleanFlag2: 'Weight Loss',
+      mockCleanProd1: 'Peptide 2.5mg', mockCleanProd2: 'Wellness Support 2.5mg',
+      mockCleanPrice: '$149.00',
+      mockFlowMetaAd: 'Meta ad',
+      mockFlowRestrictedStore: 'Restricted store',
+      mockFlowPixelFlagged: 'Pixel fires with flagged payload',
+      mockFlowMetaCat: 'Meta categorizes domain',
+      mockFlowEventsBlocked: 'Events blocked',
+      mockFlowCompliantPage: 'Compliant landing page',
+      mockFlowMainStore: 'Main store checkout',
+      mockFlowProxy: 'SaveMyPixel proxy',
+      mockFlowEventsOk: 'Compliant events received',
+      mockHoodLabel: 'Under the hood',
+      mockHood1: 'server-side CAPI',
+      mockHood2: 'session handoff via signed tokens',
+      mockHood3: 'domain-level event rewriting',
+      mockHood4: 'policy-driven keyword cleansing',
+      mockHood5: 'SOC 2 in progress',
     },
 
     pt: {
@@ -418,6 +466,54 @@
       errRevenue: 'Selecione uma faixa de faturamento.',
       errIndustry: 'Selecione seu segmento.',
       errGeneric: 'Algo deu errado. Tente novamente.',
+
+      // UI mocks
+      mockAccDisabledTitle: 'Conta Desativada',
+      mockAccDisabledH: 'Desativamos sua conta de anúncios',
+      mockAccDisabledP1: 'Revisamos sua conta e constatamos que ela não está em conformidade com nossos Padrões de Publicidade para produtos regulamentados e alegações de saúde restritas.',
+      mockAccDisabledP2: 'Esta decisão é definitiva. Você não pode solicitar outra revisão.',
+      mockAccDisabledBtn: 'Baixar suas informações',
+      mockAccDisabledLink: 'Leia os Padrões de Publicidade →',
+      mockPanelTitle: 'Gerenciar categorias de fonte de dados',
+      mockPanelTab: 'Gerenciador de Eventos',
+      mockColDomain: 'Domínio', mockColSource: 'Fonte', mockColCategory: 'Categoria',
+      mockWebsite: 'Site',
+      mockCatHealth: 'Saúde & bem-estar',
+      mockCatRestricted: 'Produtos restritos',
+      mockRejected: 'Reprovado',
+      mockReason1: 'Alegações inaceitáveis sobre suplementos e testosterona.',
+      mockReason2: 'Atributos pessoais: referências a condições de saúde.',
+      mockReason3: 'Produtos proibidos: peptídeos não aprovados.',
+      mockChartTitle: 'Eventos de compra entregues ao Meta',
+      mockChartRange: 'Últimos 30 dias',
+      mockEventsDay: 'eventos / dia',
+      mockDomainFlagged: 'domínio sinalizado',
+      mockScanAdLabel: 'Análise do anúncio', mockScanFlagged: 'Sinalizado',
+      mockHighRisk: 'Alto risco', mockCriticalRisk: 'Risco crítico',
+      mockBarText: 'Texto', mockBarImage: 'Imagem', mockBarImages: 'Imagens',
+      mockBarPolicy: 'Política', mockBarMarkup: 'Markup',
+      mockScanAdFoot: '3 termos sinalizados · 1 problema de imagem',
+      mockScanSiteLabel: 'Análise do site', mockNonCompliant: 'Não conforme',
+      mockScanSiteFoot: '12 termos sinalizados · 3 imagens de produto · claims schema.org',
+      mockCleanBefore: 'Antes', mockCleanAfter: 'Depois',
+      mockCleanFlag1: 'Semaglutida', mockCleanFlag2: 'Perda de Peso',
+      mockCleanProd1: 'Peptídeo 2,5mg', mockCleanProd2: 'Suporte ao Bem-estar 2,5mg',
+      mockCleanPrice: 'R$749,00',
+      mockFlowMetaAd: 'Anúncio Meta',
+      mockFlowRestrictedStore: 'Loja restrita',
+      mockFlowPixelFlagged: 'Pixel dispara com payload sinalizado',
+      mockFlowMetaCat: 'Meta categoriza o domínio',
+      mockFlowEventsBlocked: 'Eventos bloqueados',
+      mockFlowCompliantPage: 'Página de destino em conformidade',
+      mockFlowMainStore: 'Checkout da loja principal',
+      mockFlowProxy: 'Proxy SaveMyPixel',
+      mockFlowEventsOk: 'Eventos em conformidade recebidos',
+      mockHoodLabel: 'Por dentro',
+      mockHood1: 'CAPI server-side',
+      mockHood2: 'repasse de sessão via tokens assinados',
+      mockHood3: 'reescrita de eventos em nível de domínio',
+      mockHood4: 'limpeza de palavras-chave orientada por política',
+      mockHood5: 'SOC 2 em andamento',
     },
   };
 
@@ -463,18 +559,31 @@
 
   // ─── Locale resolution ─────────────────────────────────────────────────────
   async function detectLocaleByIp() {
+    // Try ip-api.com first (more reliable, higher rate limit)
     try {
-      // ipapi.co is free, no key needed, returns JSON
+      const res = await fetch('https://ip-api.com/json/?fields=countryCode', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        const country = (data.countryCode || '').toUpperCase();
+        if (country === 'BR') return 'pt';
+        if (country === 'US') return 'en';
+        // Portuguese-speaking countries → PT
+        if (['PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL'].includes(country)) return 'pt';
+        return null;
+      }
+    } catch { /* fall through */ }
+    // Fallback: ipapi.co
+    try {
       const res = await fetch('https://ipapi.co/json/', { cache: 'no-store' });
-      if (!res.ok) return null;
-      const data = await res.json();
-      const country = (data.country_code || '').toUpperCase();
-      if (country === 'BR') return 'pt';
-      if (country === 'US') return 'en';
-      return null; // let caller decide fallback
-    } catch {
-      return null;
-    }
+      if (res.ok) {
+        const data = await res.json();
+        const country = (data.country_code || '').toUpperCase();
+        if (country === 'BR') return 'pt';
+        if (country === 'US') return 'en';
+        return null;
+      }
+    } catch { /* ignore */ }
+    return null;
   }
 
   async function resolveLocale() {
