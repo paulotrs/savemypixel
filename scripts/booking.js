@@ -1,5 +1,4 @@
 // Booking modal: opens from any [data-book-call] trigger.
-// Submit handler is a placeholder — wire to a real endpoint when backend is ready.
 (function () {
   const modal = document.getElementById('bookCallModal');
   if (!modal) return;
@@ -62,6 +61,10 @@
     if (field) field.classList.remove('has-error');
   }
 
+  function t(key, fallback) {
+    return (window.SMP_I18N && window.SMP_I18N[key]) || fallback;
+  }
+
   function validate(data) {
     let firstInvalid = null;
     const fail = (name, msg, el) => {
@@ -70,20 +73,20 @@
     };
 
     if (!data.name || data.name.trim().length < 2) {
-      fail('name', 'Please enter your name.', form.querySelector('[name="name"]'));
+      fail('name', t('errName', 'Please enter your name.'), form.querySelector('[name="name"]'));
     }
     const phoneDigits = (data.phone || '').replace(/\D/g, '');
     if (phoneDigits.length < 7) {
-      fail('phone', 'Enter a valid phone number.', form.querySelector('[name="phone"]'));
+      fail('phone', t('errPhone', 'Enter a valid phone number.'), form.querySelector('[name="phone"]'));
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '')) {
-      fail('email', 'Enter a valid email address.', form.querySelector('[name="email"]'));
+      fail('email', t('errEmail', 'Enter a valid email address.'), form.querySelector('[name="email"]'));
     }
     if (!data.revenue) {
-      fail('revenue', 'Pick a revenue range.', form.querySelector('[name="revenue"]'));
+      fail('revenue', t('errRevenue', 'Pick a revenue range.'), form.querySelector('[name="revenue"]'));
     }
     if (!data.industry) {
-      fail('industry', 'Select your industry.', form.querySelector('[name="industry"]'));
+      fail('industry', t('errIndustry', 'Select your industry.'), form.querySelector('[name="industry"]'));
     }
 
     return firstInvalid;
@@ -156,14 +159,33 @@
 
     form.classList.add('is-submitting');
 
-    // TODO: replace with real POST when backend is ready
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      console.log('[SaveMyPixel] booking submitted', data);
+      const res = await fetch(
+        'https://cjjuotrbegmjceacygtt.supabase.co/rest/v1/leads',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqanVvdHJiZWdtamNlYWN5Z3R0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNTc0MDAsImV4cCI6MjA5MjgzMzQwMH0.1pGAKypdY3PuRiAwuWPp9l-8oTlz9dquL9elQ8XV-Zg',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqanVvdHJiZWdtamNlYWN5Z3R0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNTc0MDAsImV4cCI6MjA5MjgzMzQwMH0.1pGAKypdY3PuRiAwuWPp9l-8oTlz9dquL9elQ8XV-Zg',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            revenue: data.revenue,
+            industry: data.industry,
+            locale: (window.SMP_I18N && document.documentElement.lang) || 'en'
+          })
+        }
+      );
+
+      if (!res.ok) throw new Error('supabase ' + res.status);
       redirectToThanks(data);
     } catch (err) {
       form.classList.remove('is-submitting');
-      setError('email', 'Something went wrong. Please try again.');
+      setError('email', t('errGeneric', 'Something went wrong. Please try again.'));
     }
   });
 })();

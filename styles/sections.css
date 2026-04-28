@@ -16,6 +16,9 @@
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr; gap: var(--s-7); }
 }
+@media (max-width: 640px) {
+  .hero-grid { gap: var(--s-6); }
+}
 .hero-copy {
   display: flex;
   flex-direction: column;
@@ -44,10 +47,19 @@
   .hero-illo { min-height: 320px; }
   .hero-illo-img { margin: 0 auto; max-width: 420px; }
 }
+@media (max-width: 640px) {
+  .hero-copy { padding-right: 0; }
+  .hero-illo { min-height: 0; }
+  .hero-illo-img { max-width: 100%; }
+  .hero-cta-row .btn-lg { width: 100%; justify-content: center; }
+}
 
 /* Trust strip */
 .trust {
   margin-top: calc(var(--s-9) + 16px);
+}
+@media (max-width: 640px) {
+  .trust { margin-top: var(--s-8); }
 }
 .trust-label {
   font-family: var(--font-mono);
@@ -627,7 +639,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--s-4);
 }
-@media (max-width: 768px) { .stats { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .stats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
 .stat {
   padding: var(--s-7) var(--s-6);
   border: 1px solid var(--hairline);
@@ -638,7 +651,7 @@
   gap: var(--s-3);
 }
 .stat-val {
-  font-size: clamp(64px, 8vw, 104px);
+  font-size: clamp(48px, 8vw, 104px);
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 0.95;
@@ -1161,7 +1174,7 @@
   bottom: 72px;
   right: 20px;
   z-index: 100;
-  width: 320px;
+  width: min(320px, calc(100vw - 40px));
   background: var(--surface);
   border: 1px solid var(--hairline);
   border-radius: var(--r-3);
@@ -2091,6 +2104,10 @@
   .clean-arrow { transform: rotate(90deg); }
   .mock-ad-row { grid-template-columns: 1fr 1fr; }
   .mock-ad:nth-child(3) { display: none; }
+  .mock-tr { grid-template-columns: 1.5fr 0.6fr; }
+  .mock-tr > *:last-child { display: none; }
+  .flow-row { grid-template-columns: 72px 1fr; }
+  .flow-row .status { display: none; }
 }
 
 /* =========================================================
@@ -2428,6 +2445,7 @@
   flex-shrink: 0;
 }
 
+.book-success[hidden] { display: none !important; }
 .book-success {
   display: flex;
   flex-direction: column;

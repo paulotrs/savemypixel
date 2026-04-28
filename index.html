@@ -23,6 +23,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 }/*EDITMODE-END*/;
 </script>
 
+<!-- i18n must run before anything else renders text -->
+<script src="scripts/i18n.js"></script>
+
 <!-- ========== NAV ========== -->
 <header class="nav">
   <div class="container nav-inner">
@@ -30,12 +33,55 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       <img class="brand-logo" src="assets/logo.png?v=2" alt="SaveMyPixel" width="170" height="34">
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+      <a href="#how" data-i18n="navHow">How it works</a>
+      <a href="#pricing" data-i18n="navPricing">Pricing</a>
+      <a href="#faq" data-i18n="navFaq">FAQ</a>
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-primary" href="#check" data-book-call>Book a call</a>
+      <!-- Language switcher -->
+      <div class="lang-switcher" aria-label="Language">
+        <button class="lang-flag lang-flag--active" data-lang="en" aria-label="English" onclick="SMP_setLocale('en')">
+          <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="display:block;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,0.12)">
+            <rect width="22" height="16" fill="#B22234"/>
+            <rect y="1.23" width="22" height="1.23" fill="#fff"/>
+            <rect y="3.69" width="22" height="1.23" fill="#fff"/>
+            <rect y="6.15" width="22" height="1.23" fill="#fff"/>
+            <rect y="8.62" width="22" height="1.23" fill="#fff"/>
+            <rect y="11.08" width="22" height="1.23" fill="#fff"/>
+            <rect y="13.54" width="22" height="1.23" fill="#fff"/>
+            <rect width="9" height="8.62" fill="#3C3B6E"/>
+            <g fill="#fff">
+              <circle cx="1.1" cy="0.9" r="0.55"/>  <circle cx="2.35" cy="1.7" r="0.55"/>
+              <circle cx="3.6" cy="0.9" r="0.55"/>  <circle cx="4.85" cy="1.7" r="0.55"/>
+              <circle cx="6.1" cy="0.9" r="0.55"/>  <circle cx="7.35" cy="1.7" r="0.55"/>
+              <circle cx="1.75" cy="2.5" r="0.55"/> <circle cx="3" cy="3.3" r="0.55"/>
+              <circle cx="4.25" cy="2.5" r="0.55"/> <circle cx="5.5" cy="3.3" r="0.55"/>
+              <circle cx="6.75" cy="2.5" r="0.55"/> <circle cx="8" cy="3.3" r="0.55"/>
+              <circle cx="1.1" cy="4.1" r="0.55"/>  <circle cx="2.35" cy="4.9" r="0.55"/>
+              <circle cx="3.6" cy="4.1" r="0.55"/>  <circle cx="4.85" cy="4.9" r="0.55"/>
+              <circle cx="6.1" cy="4.1" r="0.55"/>  <circle cx="7.35" cy="4.9" r="0.55"/>
+              <circle cx="1.75" cy="5.7" r="0.55"/> <circle cx="3" cy="6.5" r="0.55"/>
+              <circle cx="4.25" cy="5.7" r="0.55"/> <circle cx="5.5" cy="6.5" r="0.55"/>
+              <circle cx="6.75" cy="5.7" r="0.55"/> <circle cx="8" cy="6.5" r="0.55"/>
+              <circle cx="1.1" cy="7.3" r="0.55"/>  <circle cx="3.6" cy="7.3" r="0.55"/>
+              <circle cx="6.1" cy="7.3" r="0.55"/>
+            </g>
+          </svg>
+        </button>
+        <button class="lang-flag" data-lang="pt" aria-label="Português" onclick="SMP_setLocale('pt')">
+          <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="display:block;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,0.12)">
+            <rect width="22" height="16" fill="#009C3B"/>
+            <rect x="5.5" width="11" height="16" fill="#009C3B"/>
+            <!-- diamond -->
+            <polygon points="11,1 20.5,8 11,15 1.5,8" fill="#FEDF00"/>
+            <!-- circle -->
+            <circle cx="11" cy="8" r="3.2" fill="#002776"/>
+            <!-- white stripe across circle -->
+            <path d="M7.95 6.5 Q11 5.2 14.05 6.5" stroke="#fff" stroke-width="0.9" fill="none"/>
+          </svg>
+        </button>
+      </div>
+      <a class="btn btn-primary" href="#check" data-book-call data-i18n="navCta">Book a call</a>
     </div>
   </div>
 </header>
@@ -46,13 +92,13 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section hero" data-screen-label="01 Hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">For peptides, GLP-1, health &amp; fitness, and supplement brands</span>
-      <h1 class="display">Clean data.<br>Clean domain.<br>Live ads.</h1>
-      <p class="lead">SaveMyPixel sits between your store and Meta. Your main site stays exactly as it is. Meta sees a compliant destination and clean event data. Your pixel keeps firing. Your optimization keeps learning.</p>
+      <span class="eyebrow" data-i18n="heroEyebrow">For peptides, GLP-1, health &amp; fitness, and supplement brands</span>
+      <h1 class="display" data-i18n="heroH1">Clean data.<br>Clean domain.<br>Live ads.</h1>
+      <p class="lead" data-i18n="heroLead">SaveMyPixel sits between your store and Meta. Your main site stays exactly as it is. Meta sees a compliant destination and clean event data. Your pixel keeps firing. Your optimization keeps learning.</p>
       <div class="hero-cta-row">
-        <a class="btn btn-primary btn-lg" href="#check" data-book-call>Book a free consultation →</a>
+        <a class="btn btn-primary btn-lg" href="#check" data-book-call data-i18n="heroCta">Book a free consultation →</a>
       </div>
-      <a class="arrow-link" href="#how" style="margin-top:-8px">or see how it works</a>
+      <a class="arrow-link" href="#how" style="margin-top:-8px" data-i18n="heroSeeHow">or see how it works</a>
     </div>
 
     <!-- Right-side illustration -->
@@ -66,7 +112,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
   <!-- Trust strip -->
   <div class="container trust">
-    <p class="trust-label">Used by brands running Meta ads in restricted categories</p>
+    <p class="trust-label" data-i18n="trustLabel">Used by brands running Meta ads in restricted categories</p>
     <ul class="trust-logos" role="list">
       <li><img src="assets/trust-vivint.png" alt="Vivint" height="22"></li>
       <li><img src="assets/trust-buckedup.png" alt="Bucked Up" height="22"></li>
@@ -82,9 +128,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section" id="problem" data-screen-label="02 Problem">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">The problem</span>
-      <h2 class="h1">Meta is flagging health and wellness brands like yours.</h2>
-      <p class="lead">Ad rejections, disabled accounts, and flagged domains aren't random. They're stages of an enforcement process. Most brands don't see it happening until it's already advanced.</p>
+      <span class="eyebrow" data-i18n="problemEyebrow">The problem</span>
+      <h2 class="h1" data-i18n="problemH2">Meta is flagging health and wellness brands like yours.</h2>
+      <p class="lead" data-i18n="problemLead">Ad rejections, disabled accounts, and flagged domains aren't random. They're stages of an enforcement process. Most brands don't see it happening until it's already advanced.</p>
     </div>
 
     <!-- 4 evidence cards -->
@@ -92,7 +138,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       <!-- Card 1: Disabled account -->
       <article class="ev-card">
         <header class="ev-head">
-          <h3 class="ev-title">Disabled ad accounts</h3>
+          <h3 class="ev-title" data-i18n="ev1Title">Disabled ad accounts</h3>
           <span class="ev-mark ev-mark--neg" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </span>
@@ -110,13 +156,13 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <div class="mock-link">Read the Advertising Standards →</div>
           </div>
         </div>
-        <p class="ev-caption">Repeat rejections spiral into <strong>account-level enforcement</strong>. There is no appeal.</p>
+        <p class="ev-caption" data-i18n="ev1Caption">Repeat rejections spiral into <strong>account-level enforcement</strong>. There is no appeal.</p>
       </article>
 
       <!-- Card 2: Flagged domain -->
       <article class="ev-card">
         <header class="ev-head">
-          <h3 class="ev-title">Flagged domains</h3>
+          <h3 class="ev-title" data-i18n="ev2Title">Flagged domains</h3>
           <span class="ev-mark ev-mark--neg" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </span>
@@ -149,13 +195,13 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </div>
           </div>
         </div>
-        <p class="ev-caption">Meta classifies your domain, then <strong>blocks your events</strong>. You keep paying; nothing learns.</p>
+        <p class="ev-caption" data-i18n="ev2Caption">Meta classifies your domain, then <strong>blocks your events</strong>. You keep paying; nothing learns.</p>
       </article>
 
       <!-- Card 3: Rejected ads -->
       <article class="ev-card">
         <header class="ev-head">
-          <h3 class="ev-title">Rejected creative</h3>
+          <h3 class="ev-title" data-i18n="ev3Title">Rejected creative</h3>
           <span class="ev-mark ev-mark--neg" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </span>
@@ -188,13 +234,13 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </div>
           </div>
         </div>
-        <p class="ev-caption">Creatives get <strong>rejected before delivery</strong>. Rejections stack, and they compound.</p>
+        <p class="ev-caption" data-i18n="ev3Caption">Creatives get <strong>rejected before delivery</strong>. Rejections stack, and they compound.</p>
       </article>
 
       <!-- Card 4: Performance collapse -->
       <article class="ev-card">
         <header class="ev-head">
-          <h3 class="ev-title">Signal collapse</h3>
+          <h3 class="ev-title" data-i18n="ev4Title">Signal collapse</h3>
           <span class="ev-mark ev-mark--neg" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </span>
@@ -214,11 +260,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
                   <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
                 </linearGradient>
               </defs>
-              <!-- area -->
               <path d="M 0 28 L 20 24 L 40 30 L 60 22 L 80 26 L 100 20 L 120 24 L 140 22 L 160 46 L 180 58 L 200 66 L 220 72 L 240 74 L 260 75 L 280 76 L 280 80 L 0 80 Z" fill="url(#chartFadeNeg)"/>
-              <!-- line -->
               <path d="M 0 28 L 20 24 L 40 30 L 60 22 L 80 26 L 100 20 L 120 24 L 140 22 L 160 46 L 180 58 L 200 66 L 220 72 L 240 74 L 260 75 L 280 76" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <!-- drop marker -->
               <line x1="150" y1="10" x2="150" y2="78" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 3" opacity="0.5"/>
             </svg>
             <div class="mock-chart-foot">
@@ -227,7 +270,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </div>
           </div>
         </div>
-        <p class="ev-caption">Event flow collapses. <strong>Optimization resets.</strong> CPAs double within a week.</p>
+        <p class="ev-caption" data-i18n="ev4Caption"><strong>Optimization resets.</strong> CPAs double within a week.</p>
       </article>
     </div>
 
@@ -235,8 +278,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     <details class="ladder-details">
       <summary>
         <span class="ladder-sum-label">
-          <span class="eyebrow">Technical detail</span>
-          <span class="ladder-sum-text">See the 4-stage enforcement ladder Meta runs on restricted domains</span>
+          <span class="eyebrow" data-i18n="ladderEyebrow">Technical detail</span>
+          <span class="ladder-sum-text" data-i18n="ladderSumText">See the 4-stage enforcement ladder Meta runs on restricted domains</span>
         </span>
         <span class="ladder-sum-icon" aria-hidden="true"></span>
       </summary>
@@ -244,9 +287,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
         <ol class="ladder-steps" aria-label="Enforcement ladder">
           <li class="step" data-step="0">
             <div class="step-card">
-              <span class="step-level">Level 00</span>
-              <h3 class="step-name">Domain categorized</h3>
-              <p class="step-desc">Meta's crawler scans your destination URL and tags your domain as restricted. You receive no notification.</p>
+              <span class="step-level" data-i18n="step0Level">Level 00</span>
+              <h3 class="step-name" data-i18n="step0Name">Domain categorized</h3>
+              <p class="step-desc" data-i18n="step0Desc">Meta's crawler scans your destination URL and tags your domain as restricted. You receive no notification.</p>
               <span class="step-indicator" aria-label="Signal integrity: full" data-signal="4">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>
               </span>
@@ -254,9 +297,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
           </li>
           <li class="step" data-step="1">
             <div class="step-card">
-              <span class="step-level">Level 01</span>
-              <h3 class="step-name">Event metadata blocked</h3>
-              <p class="step-desc">Your pixel still fires, but Meta strips product names, values, and categories from incoming events before ingestion.</p>
+              <span class="step-level" data-i18n="step1Level">Level 01</span>
+              <h3 class="step-name" data-i18n="step1Name">Event metadata blocked</h3>
+              <p class="step-desc" data-i18n="step1Desc">Your pixel still fires, but Meta strips product names, values, and categories from incoming events before ingestion.</p>
               <span class="step-indicator" aria-label="Signal integrity: three quarters" data-signal="3">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.25"/>
@@ -267,9 +310,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
           </li>
           <li class="step" data-step="2">
             <div class="step-card">
-              <span class="step-level">Level 02</span>
-              <h3 class="step-name">Purchase events blocked</h3>
-              <p class="step-desc">The conversion signal Meta's algorithm optimizes on stops flowing. Delivery quality degrades across all campaigns.</p>
+              <span class="step-level" data-i18n="step2Level">Level 02</span>
+              <h3 class="step-name" data-i18n="step2Name">Purchase events blocked</h3>
+              <p class="step-desc" data-i18n="step2Desc">The conversion signal Meta's algorithm optimizes on stops flowing. Delivery quality degrades across all campaigns.</p>
               <span class="step-indicator" aria-label="Signal integrity: one quarter" data-signal="1">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.25"/>
@@ -280,9 +323,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
           </li>
           <li class="step" data-step="3">
             <div class="step-card">
-              <span class="step-level">Level 03</span>
-              <h3 class="step-name">All events blocked</h3>
-              <p class="step-desc">Pixel data is dropped entirely. Your ad account has no signal to optimize on, and creative-level learning resets.</p>
+              <span class="step-level" data-i18n="step3Level">Level 03</span>
+              <h3 class="step-name" data-i18n="step3Name">All events blocked</h3>
+              <p class="step-desc" data-i18n="step3Desc">Pixel data is dropped entirely. Your ad account has no signal to optimize on, and creative-level learning resets.</p>
               <span class="step-indicator" aria-label="Signal integrity: empty" data-signal="0">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.25"/>
@@ -295,8 +338,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     </details>
 
     <div class="ladder-foot">
-      <p class="small">Not sure which level you're on?</p>
-      <a class="arrow-link" href="#check" data-book-call>Book a free compliance review</a>
+      <p class="small" data-i18n="ladderFootSmall">Not sure which level you're on?</p>
+      <a class="arrow-link" href="#check" data-book-call data-i18n="ladderFootLink">Book a free compliance review</a>
     </div>
   </div>
 </section>
@@ -305,9 +348,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section" id="solution" data-screen-label="03 Solution">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">The solution</span>
-      <h2 class="h1">Stay live with compliant Meta ads.</h2>
-      <p class="lead">Four pieces of infrastructure that sit between your store and Meta. Customers land on your site and check out normally. Meta only ever sees a clean domain and compliant events.</p>
+      <span class="eyebrow" data-i18n="solutionEyebrow">The solution</span>
+      <h2 class="h1" data-i18n="solutionH2">Stay live with compliant Meta ads.</h2>
+      <p class="lead" data-i18n="solutionLead">Four pieces of infrastructure that sit between your store and Meta. Customers land on your site and check out normally. Meta only ever sees a clean domain and compliant events.</p>
     </div>
 
     <!-- 4 solution cards -->
@@ -315,7 +358,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       <!-- Card 1: Ad compliance pre-check -->
       <article class="sol-card">
         <header class="sol-head">
-          <h3 class="sol-title">Ad compliance pre-check</h3>
+          <h3 class="sol-title" data-i18n="sol1Title">Ad compliance pre-check</h3>
           <span class="sol-mark sol-mark--ok" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M3.5 8.5 L6.5 11.5 L12.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -356,13 +399,13 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </div>
           </div>
         </div>
-        <p class="sol-caption">We scan creatives for policy risk <strong>before</strong> they go live. Fix issues upfront, not after the rejection.</p>
+        <p class="sol-caption" data-i18n="sol1Caption">We scan creatives for policy risk <strong>before</strong> they go live. Fix issues upfront, not after the rejection.</p>
       </article>
 
       <!-- Card 2: Domain masking -->
       <article class="sol-card">
         <header class="sol-head">
-          <h3 class="sol-title">Domain masking</h3>
+          <h3 class="sol-title" data-i18n="sol2Title">Domain masking</h3>
           <span class="sol-mark sol-mark--ok" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M3.5 8.5 L6.5 11.5 L12.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -386,23 +429,23 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <div class="mask-bottom">
               <div class="mask-screen mask-screen--clean">
                 <div class="mask-screen-body mask-screen-body--clean" aria-hidden="true"><img src="assets/mask-clean.png?v=2" alt="" loading="lazy"></div>
-                <span class="mask-screen-label">Compliant Site</span>
+                <span class="mask-screen-label" data-i18n="baWith">Compliant Site</span>
               </div>
               <span class="mask-arrow" aria-hidden="true">↔</span>
               <div class="mask-screen mask-screen--real">
                 <div class="mask-screen-body mask-screen-body--real" aria-hidden="true"><img src="assets/mask-real.png?v=2" alt="" loading="lazy"></div>
-                <span class="mask-screen-label">Original Store</span>
+                <span class="mask-screen-label" data-i18n="baWithout">Original Store</span>
               </div>
             </div>
           </div>
         </div>
-        <p class="sol-caption">Customers shop your real store. Meta only sees the <strong>compliant domain</strong>. Events stay clean and optimization stabilizes.</p>
+        <p class="sol-caption" data-i18n="sol2Caption">Customers shop your real store. Meta only sees the <strong>compliant domain</strong>. Events stay clean and optimization stabilizes.</p>
       </article>
 
       <!-- Card 3: Website risk assessment -->
       <article class="sol-card">
         <header class="sol-head">
-          <h3 class="sol-title">Website risk assessment</h3>
+          <h3 class="sol-title" data-i18n="sol3Title">Website risk assessment</h3>
           <span class="sol-mark sol-mark--ok" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M3.5 8.5 L6.5 11.5 L12.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -443,13 +486,13 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </div>
           </div>
         </div>
-        <p class="sol-caption">We scan the <strong>images, copy, and markup</strong> on your landing page the way Meta's crawler does. Know your risk score before Meta assigns it.</p>
+        <p class="sol-caption" data-i18n="sol3Caption">We scan the <strong>images, copy, and markup</strong> on your landing page the way Meta's crawler does. Know your risk score before Meta assigns it.</p>
       </article>
 
       <!-- Card 4: Keyword cleansing -->
       <article class="sol-card">
         <header class="sol-head">
-          <h3 class="sol-title">Keyword cleansing</h3>
+          <h3 class="sol-title" data-i18n="sol4Title">Keyword cleansing</h3>
           <span class="sol-mark sol-mark--ok" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="12" height="12"><path d="M3.5 8.5 L6.5 11.5 L12.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -496,7 +539,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </div>
           </div>
         </div>
-        <p class="sol-caption">Restricted terms are <strong>stripped from event payloads</strong> before they reach Meta. Your store keeps its copy. Meta sees a clean event.</p>
+        <p class="sol-caption" data-i18n="sol4Caption">Restricted terms are <strong>stripped from event payloads</strong> before they reach Meta. Your store keeps its copy. Meta sees a clean event.</p>
       </article>
     </div>
 
@@ -504,19 +547,18 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     <details class="ladder-details">
       <summary>
         <span class="ladder-sum-label">
-          <span class="eyebrow">Technical detail</span>
-          <span class="ladder-sum-text">See the full traffic and event flow — with vs. without SaveMyPixel</span>
+          <span class="eyebrow" data-i18n="solFlowEyebrow">Technical detail</span>
+          <span class="ladder-sum-text" data-i18n="solFlowSumText">See the full traffic and event flow — with vs. without SaveMyPixel</span>
         </span>
         <span class="ladder-sum-icon" aria-hidden="true"></span>
       </summary>
       <div class="ladder-details-body">
-
     <div class="ba-diagram">
       <!-- LEFT: without -->
       <div class="ba-col ba-col--without">
         <div class="ba-head">
-          <span class="ba-label">Standard setup</span>
-          <span class="ba-kicker">without savemypixel</span>
+          <span class="ba-label" data-i18n="baWithout">Standard setup</span>
+          <span class="ba-kicker" data-i18n="baWithoutKicker">without savemypixel</span>
         </div>
         <ol class="flow-list" aria-label="Standard setup flow">
           <li class="fnode"><span class="fnode-name">Meta ad</span></li>
@@ -546,8 +588,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       <!-- RIGHT: with -->
       <div class="ba-col ba-col--with">
         <div class="ba-head">
-          <span class="ba-label">With SaveMyPixel</span>
-          <span class="ba-kicker">compliant routing</span>
+          <span class="ba-label" data-i18n="baWith">With SaveMyPixel</span>
+          <span class="ba-kicker" data-i18n="baWithKicker">compliant routing</span>
         </div>
         <ol class="flow-list" aria-label="With SaveMyPixel flow">
           <li class="fnode"><span class="fnode-name">Meta ad</span></li>
@@ -587,8 +629,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section" id="how" data-screen-label="04 How it works">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">How it works</span>
-      <h2 class="h1">Four components. One system.</h2>
+      <span class="eyebrow" data-i18n="hiwEyebrow">How it works</span>
+      <h2 class="h1" data-i18n="hiwH2">Four components. One system.</h2>
     </div>
 
     <ol class="hiw-grid" aria-label="Four components">
@@ -603,8 +645,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </svg>
           </span>
         </div>
-        <h3 class="hiw-title">Compliant landing page</h3>
-        <p class="hiw-desc">Your ads point to a Meta-approved landing page on a clean domain. We help you set it up or you bring your own.</p>
+        <h3 class="hiw-title" data-i18n="hiw1Title">Compliant landing page</h3>
+        <p class="hiw-desc" data-i18n="hiw1Desc">Your ads point to a Meta-approved landing page on a clean domain. We help you set it up or you bring your own.</p>
       </li>
 
       <li class="hiw-card">
@@ -619,8 +661,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </svg>
           </span>
         </div>
-        <h3 class="hiw-title">Session stitching</h3>
-        <p class="hiw-desc">When a visitor clicks through to checkout, we pass session identity to your main store. Attribution stays intact. Nothing changes for the customer.</p>
+        <h3 class="hiw-title" data-i18n="hiw2Title">Session stitching</h3>
+        <p class="hiw-desc" data-i18n="hiw2Desc">When a visitor clicks through to checkout, we pass session identity to your main store. Attribution stays intact. Nothing changes for the customer.</p>
       </li>
 
       <li class="hiw-card">
@@ -635,8 +677,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </svg>
           </span>
         </div>
-        <h3 class="hiw-title">Event cleansing</h3>
-        <p class="hiw-desc">Pixel and server events from both domains flow through our proxy. Restricted keywords are stripped from payloads. PII is hashed. The event source URL is rewritten to the compliant domain.</p>
+        <h3 class="hiw-title" data-i18n="hiw3Title">Event cleansing</h3>
+        <p class="hiw-desc" data-i18n="hiw3Desc">Pixel and server events from both domains flow through our proxy. Restricted keywords are stripped from payloads. PII is hashed. The event source URL is rewritten to the compliant domain.</p>
       </li>
 
       <li class="hiw-card">
@@ -652,8 +694,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             </svg>
           </span>
         </div>
-        <h3 class="hiw-title">Conversions API delivery</h3>
-        <p class="hiw-desc">Clean events are forwarded to Meta via CAPI using your pixel access token. Optimization resumes with compliant signal.</p>
+        <h3 class="hiw-title" data-i18n="hiw4Title">Conversions API delivery</h3>
+        <p class="hiw-desc" data-i18n="hiw4Desc">Clean events are forwarded to Meta via CAPI using your pixel access token. Optimization resumes with compliant signal.</p>
       </li>
     </ol>
 
@@ -678,8 +720,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section muted" id="features" data-screen-label="05 Features">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">What's included</span>
-      <h2 class="h1">Everything that keeps your account healthy.</h2>
+      <span class="eyebrow" data-i18n="featuresEyebrow">What's included</span>
+      <h2 class="h1" data-i18n="featuresH2">Everything that keeps your account healthy.</h2>
     </div>
 
     <ul class="features" role="list">
@@ -690,8 +732,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <path d="M9 9 h11 v6 a5 5 0 0 1 -5.5 5 a5 5 0 0 1 -5.5 -5 z"/>
           </svg>
         </span>
-        <h3 class="feat-name">Domain masking</h3>
-        <p class="feat-desc">Meta only sees your compliant landing page. Your main store stays yours.</p>
+        <h3 class="feat-name" data-i18n="feat1Name">Domain masking</h3>
+        <p class="feat-desc" data-i18n="feat1Desc">Meta only sees your compliant landing page. Your main store stays yours.</p>
       </li>
 
       <li class="feat">
@@ -701,8 +743,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <path d="M16 14 l6 -6" stroke-width="1.5"/>
           </svg>
         </span>
-        <h3 class="feat-name">Keyword cleansing</h3>
-        <p class="feat-desc">Restricted terms are stripped from event payloads, product feeds, and URLs before events reach Meta.</p>
+        <h3 class="feat-name" data-i18n="feat2Name">Keyword cleansing</h3>
+        <p class="feat-desc" data-i18n="feat2Desc">Restricted terms are stripped from event payloads, product feeds, and URLs before events reach Meta.</p>
       </li>
 
       <li class="feat">
@@ -714,8 +756,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <path d="M19 19 l2.5 2.5"/>
           </svg>
         </span>
-        <h3 class="feat-name">Pre-launch scanning</h3>
-        <p class="feat-desc">Ad creatives and landing pages are scanned against Meta's enforcement patterns before go-live.</p>
+        <h3 class="feat-name" data-i18n="feat3Name">Pre-launch scanning</h3>
+        <p class="feat-desc" data-i18n="feat3Desc">Ad creatives and landing pages are scanned against Meta's enforcement patterns before go-live.</p>
       </li>
 
       <li class="feat">
@@ -727,8 +769,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <path d="M18 7 h3 M18 12 h3 M18 17 h3"/>
           </svg>
         </span>
-        <h3 class="feat-name">Server-side events</h3>
-        <p class="feat-desc">Conversions API delivery from the compliant domain. Better match quality than browser pixel alone.</p>
+        <h3 class="feat-name" data-i18n="feat4Name">Server-side events</h3>
+        <p class="feat-desc" data-i18n="feat4Desc">Conversions API delivery from the compliant domain. Better match quality than browser pixel alone.</p>
       </li>
 
       <li class="feat">
@@ -739,8 +781,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <path d="M10 11.5 h4"/>
           </svg>
         </span>
-        <h3 class="feat-name">Session stitching</h3>
-        <p class="feat-desc">Identity persists across the compliant domain and your main store. Attribution and conversion tracking stay accurate.</p>
+        <h3 class="feat-name" data-i18n="feat5Name">Session stitching</h3>
+        <p class="feat-desc" data-i18n="feat5Desc">Identity persists across the compliant domain and your main store. Attribution and conversion tracking stay accurate.</p>
       </li>
 
       <li class="feat">
@@ -750,8 +792,8 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
             <path d="M11 10 h5 v3 h-2 v2 h-2"/>
           </svg>
         </span>
-        <h3 class="feat-name">Managed onboarding</h3>
-        <p class="feat-desc">Setup handled by our team. Domain selection, pixel configuration, Shopify app install, event testing. You don't touch code.</p>
+        <h3 class="feat-name" data-i18n="feat6Name">Managed onboarding</h3>
+        <p class="feat-desc" data-i18n="feat6Desc">Setup handled by our team. Domain selection, pixel configuration, Shopify app install, event testing. You don't touch code.</p>
       </li>
     </ul>
   </div>
@@ -761,34 +803,34 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section" id="fit" data-screen-label="06 Who it's for">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">Qualifying</span>
-      <h2 class="h1">Built specifically for restricted categories.</h2>
+      <span class="eyebrow" data-i18n="fitEyebrow">Qualifying</span>
+      <h2 class="h1" data-i18n="fitH2">Built specifically for restricted categories.</h2>
     </div>
 
     <div class="qualify">
       <div class="qual-col">
         <div class="qual-head">
-          <span class="qual-label">Fit</span>
-          <h3 class="qual-title">You're running Meta ads and hitting restrictions</h3>
+          <span class="qual-label" data-i18n="qualFitLabel">Fit</span>
+          <h3 class="qual-title" data-i18n="qualFitTitle">You're running Meta ads and hitting restrictions</h3>
         </div>
         <ul class="qual-list">
-          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You sell peptides, GLP-1 products, or related therapeutics</span></li>
-          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You sell supplements, nootropics, or functional nutrition products</span></li>
-          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You sell health &amp; fitness products Meta restricts (weight, sleep, hormones, recovery, performance)</span></li>
-          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your ads get rejected, your accounts get disabled, or your domains get flagged</span></li>
-          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You run Meta ads as a primary acquisition channel</span></li>
-          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You're on Shopify or any custom commerce platform</span></li>
+          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="qualFit1">You sell peptides, GLP-1 products, or related therapeutics</span></li>
+          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="qualFit2">You sell supplements, nootropics, or functional nutrition products</span></li>
+          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="qualFit3">You sell health &amp; fitness products Meta restricts (weight, sleep, hormones, recovery, performance)</span></li>
+          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="qualFit4">Your ads get rejected, your accounts get disabled, or your domains get flagged</span></li>
+          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="qualFit5">You run Meta ads as a primary acquisition channel</span></li>
+          <li class="qual-item"><span class="qual-icon ok" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="qualFit6">You're on Shopify or any custom commerce platform</span></li>
         </ul>
       </div>
       <div class="qual-col">
         <div class="qual-head">
-          <span class="qual-label">Not a fit</span>
-          <h3 class="qual-title">You need something we don't do</h3>
+          <span class="qual-label" data-i18n="qualNoLabel">Not a fit</span>
+          <h3 class="qual-title" data-i18n="qualNoTitle">You need something we don't do</h3>
         </div>
         <ul class="qual-list">
-          <li class="qual-item"><span class="qual-icon no" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M4 8 H12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>You're not in a restricted category. You don't need us.</span></li>
-          <li class="qual-item"><span class="qual-icon no" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M4 8 H12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>You need ad management or creative production. We don't do that.</span></li>
-          <li class="qual-item"><span class="qual-icon no" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M4 8 H12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>You're looking for a way to circumvent Meta's policies. We don't do that either.</span></li>
+          <li class="qual-item"><span class="qual-icon no" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M4 8 H12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span data-i18n="qualNo1">You're not in a restricted category. You don't need us.</span></li>
+          <li class="qual-item"><span class="qual-icon no" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M4 8 H12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span data-i18n="qualNo2">You need ad management or creative production. We don't do that.</span></li>
+          <li class="qual-item"><span class="qual-icon no" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M4 8 H12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span data-i18n="qualNo3">You're looking for a way to circumvent Meta's policies. We don't do that either.</span></li>
         </ul>
       </div>
     </div>
@@ -799,27 +841,27 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section" id="results" data-screen-label="07 Results">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">Outcomes</span>
-      <h2 class="h1">What the infrastructure does.</h2>
+      <span class="eyebrow" data-i18n="resultsEyebrow">Outcomes</span>
+      <h2 class="h1" data-i18n="resultsH2">What the infrastructure does.</h2>
     </div>
     <div class="stats">
       <div class="stat">
         <div class="stat-val tnum">~20<small>%</small></div>
-        <div class="stat-label">Performance lift</div>
-        <p class="stat-note">From server-side event delivery vs. browser pixel alone.</p>
+        <div class="stat-label" data-i18n="stat1Label">Performance lift</div>
+        <p class="stat-note" data-i18n="stat1Note">From server-side event delivery vs. browser pixel alone.</p>
       </div>
       <div class="stat">
         <div class="stat-val tnum">99<small>%+</small></div>
-        <div class="stat-label">Event delivery rate</div>
-        <p class="stat-note">To Meta CAPI, measured in production.</p>
+        <div class="stat-label" data-i18n="stat2Label">Event delivery rate</div>
+        <p class="stat-note" data-i18n="stat2Note">To Meta CAPI, measured in production.</p>
       </div>
       <div class="stat">
         <div class="stat-val tnum">14<small> days</small></div>
-        <div class="stat-label">Typical recovery time</div>
-        <p class="stat-note">For previously flagged domains to regain full event flow.</p>
+        <div class="stat-label" data-i18n="stat3Label">Typical recovery time</div>
+        <p class="stat-note" data-i18n="stat3Note">For previously flagged domains to regain full event flow.</p>
       </div>
     </div>
-    <p class="stats-disclaimer">Results depend on account history, category, and prior enforcement. SaveMyPixel reduces risk and restores signal. It does not guarantee ad approval.</p>
+    <p class="stats-disclaimer" data-i18n="statsDisclaimer">Results depend on account history, category, and prior enforcement. SaveMyPixel reduces risk and restores signal. It does not guarantee ad approval.</p>
   </div>
 </section>
 
@@ -827,13 +869,13 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section muted" id="testimonials" data-screen-label="08 Testimonials">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">From customers</span>
-      <h2 class="h1">How brands use SaveMyPixel.</h2>
+      <span class="eyebrow" data-i18n="testimonialsEyebrow">From customers</span>
+      <h2 class="h1" data-i18n="testimonialsH2">How brands use SaveMyPixel.</h2>
     </div>
     <div class="quotes">
       <figure class="quote">
         <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-        <blockquote class="quote-body">We reduced ad rejections from 12 a week to zero. Pixel signal came back in under two weeks.</blockquote>
+        <blockquote class="quote-body" data-i18n="quote1">We reduced ad rejections from 12 a week to zero. Pixel signal came back in under two weeks.</blockquote>
         <figcaption class="quote-attr">
           <span class="avatar" aria-hidden="true"><img src="assets/avatar-1.png" alt="" loading="lazy"></span>
           <div class="quote-who"><strong>[Name]</strong><span>Founder, [Brand]</span></div>
@@ -841,7 +883,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       </figure>
       <figure class="quote">
         <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-        <blockquote class="quote-body">Our main store didn't change. Our Meta performance did. That was the point.</blockquote>
+        <blockquote class="quote-body" data-i18n="quote2">Our main store didn't change. Our Meta performance did. That was the point.</blockquote>
         <figcaption class="quote-attr">
           <span class="avatar" aria-hidden="true"><img src="assets/avatar-2.png" alt="" loading="lazy"></span>
           <div class="quote-who"><strong>[Name]</strong><span>Head of Growth, [Brand]</span></div>
@@ -849,7 +891,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       </figure>
       <figure class="quote">
         <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-        <blockquote class="quote-body">Setup was handled end-to-end. We didn't touch our Shopify theme once.</blockquote>
+        <blockquote class="quote-body" data-i18n="quote3">Setup was handled end-to-end. We didn't touch our Shopify theme once.</blockquote>
         <figcaption class="quote-attr">
           <span class="avatar" aria-hidden="true"><img src="assets/avatar-3.png" alt="" loading="lazy"></span>
           <div class="quote-who"><strong>[Name]</strong><span>Founder, [Brand]</span></div>
@@ -857,7 +899,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       </figure>
     </div>
     <div class="quotes-foot">
-      <a class="arrow-link" href="#case-studies">Read case studies</a>
+      <a class="arrow-link" href="#case-studies" data-i18n="quotesFootLink">Read case studies</a>
     </div>
   </div>
 </section>
@@ -866,85 +908,85 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section" id="pricing" data-screen-label="09 Pricing">
   <div class="container">
     <div class="section-head section-head--center">
-      <span class="eyebrow">Pricing</span>
-      <h2 class="h1">One price. No surprises.</h2>
-      <p class="lead">Flat monthly pricing based on your revenue. No usage fees. No percentage of revenue.</p>
+      <span class="eyebrow" data-i18n="pricingEyebrow">Pricing</span>
+      <h2 class="h1" data-i18n="pricingH2">One price. No surprises.</h2>
+      <p class="lead" data-i18n="pricingLead">Flat monthly pricing based on your revenue. No usage fees. No percentage of revenue.</p>
     </div>
 
     <div class="tiers">
       <!-- STARTER -->
       <div class="tier">
         <div class="tier-top">
-          <span class="tier-name">Starter</span>
+          <span class="tier-name" data-i18n="tierStarterName">Starter</span>
           <div class="tier-price">
             <span class="big tnum">$149</span><span class="per">/mo</span>
           </div>
-          <div class="tier-bracket">Up to $50K monthly revenue</div>
+          <div class="tier-bracket" data-i18n="tierStarterBracket">Up to $50K monthly revenue</div>
         </div>
-        <p class="tier-desc">For brands just getting started on Meta.</p>
+        <p class="tier-desc" data-i18n="tierStarterDesc">For brands just getting started on Meta.</p>
         <div class="tier-divider" aria-hidden="true"></div>
         <ul class="tier-list">
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1 compliant domain</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>10 ad scans per month</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Domain masking</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Keyword cleansing</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>CAPI delivery</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Shopify or custom install</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Email support</li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierStarterF1">1 compliant domain</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierStarterF2">10 ad scans per month</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierStarterF3">Domain masking</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierStarterF4">Keyword cleansing</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierStarterF5">CAPI delivery</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierStarterF6">Shopify or custom install</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierStarterF7">Email support</span></li>
         </ul>
-        <a class="btn btn-secondary tier-cta" href="#check" data-book-call>Start with Starter →</a>
+        <a class="btn btn-secondary tier-cta" href="#check" data-book-call data-i18n="tierStarterCta">Start with Starter →</a>
       </div>
 
       <!-- GROWTH (featured) -->
       <div class="tier tier--featured">
-        <span class="tier-flag">Most popular</span>
+        <span class="tier-flag" data-i18n="tierGrowthFlag">Most popular</span>
         <div class="tier-top">
-          <span class="tier-name">Growth</span>
+          <span class="tier-name" data-i18n="tierGrowthName">Growth</span>
           <div class="tier-price">
             <span class="big tnum">$499</span><span class="per">/mo</span>
           </div>
-          <div class="tier-bracket">Up to $500K monthly revenue</div>
+          <div class="tier-bracket" data-i18n="tierGrowthBracket">Up to $500K monthly revenue</div>
         </div>
-        <p class="tier-desc">For brands scaling on Meta. Where most customers live.</p>
+        <p class="tier-desc" data-i18n="tierGrowthDesc">For brands scaling on Meta. Where most customers live.</p>
         <div class="tier-divider" aria-hidden="true"></div>
-        <div class="tier-inherit">Everything in Starter, plus:</div>
+        <div class="tier-inherit" data-i18n="tierGrowthInherit">Everything in Starter, plus:</div>
         <ul class="tier-list">
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Up to 3 compliant domains</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>50 ad scans per month</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Managed onboarding</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Priority support (24hr)</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Quarterly compliance review</li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierGrowthF1">Up to 3 compliant domains</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierGrowthF2">50 ad scans per month</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierGrowthF3">Managed onboarding</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierGrowthF4">Priority support (24hr)</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierGrowthF5">Quarterly compliance review</span></li>
         </ul>
-        <a class="btn btn-primary tier-cta" href="#check" data-book-call>Go with Growth →</a>
+        <a class="btn btn-primary tier-cta" href="#check" data-book-call data-i18n="tierGrowthCta">Go with Growth →</a>
       </div>
 
       <!-- SCALE -->
       <div class="tier">
         <div class="tier-top">
-          <span class="tier-name">Scale</span>
+          <span class="tier-name" data-i18n="tierScaleName">Scale</span>
           <div class="tier-price">
             <span class="big tnum">$2,000</span><span class="per">/mo</span>
           </div>
-          <div class="tier-bracket">Unlimited revenue</div>
+          <div class="tier-bracket" data-i18n="tierScaleBracket">Unlimited revenue</div>
         </div>
-        <p class="tier-desc">For high-volume brands and multi-brand operators.</p>
+        <p class="tier-desc" data-i18n="tierScaleDesc">For high-volume brands and multi-brand operators.</p>
         <div class="tier-divider" aria-hidden="true"></div>
-        <div class="tier-inherit">Everything in Growth, plus:</div>
+        <div class="tier-inherit" data-i18n="tierScaleInherit">Everything in Growth, plus:</div>
         <ul class="tier-list">
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited domains</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited scans</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dedicated engineer</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dedicated Slack channel</li>
-          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>4-hour SLA</li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierScaleF1">Unlimited domains</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierScaleF2">Unlimited scans</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierScaleF3">Dedicated engineer</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierScaleF4">Dedicated Slack channel</span></li>
+          <li><span class="tier-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="tierScaleF5">4-hour SLA</span></li>
         </ul>
-        <a class="btn btn-secondary tier-cta" href="#contact" data-book-call>Talk to us →</a>
+        <a class="btn btn-secondary tier-cta" href="#contact" data-book-call data-i18n="tierScaleCta">Talk to us →</a>
       </div>
     </div>
 
     <ul class="price-reassure" role="list">
-      <li><span aria-hidden="true"><svg viewBox="0 0 16 16" width="10" height="10"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No usage fees. Ever.</li>
-      <li><span aria-hidden="true"><svg viewBox="0 0 16 16" width="10" height="10"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Switch plans anytime.</li>
-      <li><span aria-hidden="true"><svg viewBox="0 0 16 16" width="10" height="10"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cancel anytime. No contracts.</li>
+      <li><span aria-hidden="true"><svg viewBox="0 0 16 16" width="10" height="10"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="reassure1">No usage fees. Ever.</span></li>
+      <li><span aria-hidden="true"><svg viewBox="0 0 16 16" width="10" height="10"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="reassure2">Switch plans anytime.</span></li>
+      <li><span aria-hidden="true"><svg viewBox="0 0 16 16" width="10" height="10"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="reassure3">Cancel anytime. No contracts.</span></li>
     </ul>
   </div>
 </section>
@@ -953,58 +995,58 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <section class="section" id="faq" data-screen-label="10 FAQ">
   <div class="container-narrow">
     <div class="section-head section-head--center">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="h1">Questions we get often.</h2>
-      <p class="lead">If yours isn't here, email us at <a class="inline-link" href="mailto:hello@savemypixel.com">hello@savemypixel.com</a>. We usually reply same-day.</p>
+      <span class="eyebrow" data-i18n="faqEyebrow">FAQ</span>
+      <h2 class="h1" data-i18n="faqH2">Questions we get often.</h2>
+      <p class="lead" data-i18n="faqLead">If yours isn't here, email us at <a class="inline-link" href="mailto:hello@savemypixel.com">hello@savemypixel.com</a>. We usually reply same-day.</p>
     </div>
     <div class="faq" data-faq>
       <details open>
-        <summary><span class="faq-num">01</span><span class="faq-q">How is this different from just using Meta's Conversions API directly?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>CAPI alone doesn't solve domain categorization. If Meta has flagged your domain, sending events from it through CAPI still gets them blocked. We solve it by routing events from a separate compliant domain, and by cleansing payloads before they reach Meta. CAPI is the delivery mechanism. What we do is the compliance layer around it.</p></div>
+        <summary><span class="faq-num">01</span><span class="faq-q" data-i18n="faq1Q">How is this different from just using Meta's Conversions API directly?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq1A">CAPI alone doesn't solve domain categorization. If Meta has flagged your domain, sending events from it through CAPI still gets them blocked. We solve it by routing events from a separate compliant domain, and by cleansing payloads before they reach Meta. CAPI is the delivery mechanism. What we do is the compliance layer around it.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">02</span><span class="faq-q">Do I have to rebuild my site?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>No. Your main store stays exactly as it is. We add one compliant landing page on a new domain. Ads point to the landing page, customers click through to your main store for checkout. Your Shopify theme, your product pages, your funnels — all untouched.</p></div>
+        <summary><span class="faq-num">02</span><span class="faq-q" data-i18n="faq2Q">Do I have to rebuild my site?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq2A">No. Your main store stays exactly as it is. We add one compliant landing page on a new domain. Ads point to the landing page, customers click through to your main store for checkout. Your Shopify theme, your product pages, your funnels — all untouched.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">03</span><span class="faq-q">How long until I see results?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>For brands with a healthy ad account, event flow is restored within 48 hours of go-live. For flagged domains, Meta's optimization algorithm typically needs 7–14 days of clean signal to fully re-learn. Ad approval patterns tend to improve within the first week.</p></div>
+        <summary><span class="faq-num">03</span><span class="faq-q" data-i18n="faq3Q">How long until I see results?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq3A">For brands with a healthy ad account, event flow is restored within 48 hours of go-live. For flagged domains, Meta's optimization algorithm typically needs 7–14 days of clean signal to fully re-learn. Ad approval patterns tend to improve within the first week.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">04</span><span class="faq-q">What platforms do you support?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Shopify via our native app (fastest install, usually under an hour). Any other platform (WooCommerce, BigCommerce, custom builds) via our script tag and managed setup. If you're on Wix or Squarespace, talk to us first — we'll tell you honestly if it'll work.</p></div>
+        <summary><span class="faq-num">04</span><span class="faq-q" data-i18n="faq4Q">What platforms do you support?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq4A">Shopify via our native app (fastest install, usually under an hour). Any other platform (WooCommerce, BigCommerce, custom builds) via our script tag and managed setup. If you're on Wix or Squarespace, talk to us first — we'll tell you honestly if it'll work.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">05</span><span class="faq-q">My domain is already flagged. Can you still help?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Yes. Most of our customers come to us after enforcement has already started. We don't un-flag your existing domain — that rarely works. What we do is route all future ad traffic through a new clean domain, which is what restores your pixel signal and optimization.</p></div>
+        <summary><span class="faq-num">05</span><span class="faq-q" data-i18n="faq5Q">My domain is already flagged. Can you still help?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq5A">Yes. Most of our customers come to us after enforcement has already started. We don't un-flag your existing domain — that rarely works. What we do is route all future ad traffic through a new clean domain, which is what restores your pixel signal and optimization.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">06</span><span class="faq-q">Do I need a new Meta pixel?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Usually not. We route clean events through your existing pixel via its access token. You keep your historical data, learning, and audience signal. In rare cases where a pixel is deeply compromised, we'll recommend a new one and help you migrate.</p></div>
+        <summary><span class="faq-num">06</span><span class="faq-q" data-i18n="faq6Q">Do I need a new Meta pixel?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq6A">Usually not. We route clean events through your existing pixel via its access token. You keep your historical data, learning, and audience signal. In rare cases where a pixel is deeply compromised, we'll recommend a new one and help you migrate.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">07</span><span class="faq-q">Do you manage ads or make creative?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>No. We're data and compliance infrastructure. Your team or agency handles buying and creative. We work alongside most major agencies and can refer you to ones who specialize in restricted categories if you need one.</p></div>
+        <summary><span class="faq-num">07</span><span class="faq-q" data-i18n="faq7Q">Do you manage ads or make creative?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq7A">No. We're data and compliance infrastructure. Your team or agency handles buying and creative. We work alongside most major agencies and can refer you to ones who specialize in restricted categories if you need one.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">08</span><span class="faq-q">How are you different from Popsixle?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Popsixle pioneered this space and built a great product. Our differences are in pricing and simplicity: we charge a flat monthly rate instead of base-plus-usage, and we handle unlimited revenue at the Scale tier. For most brands above $100K/mo in tracked revenue, we cost meaningfully less. For brands below $25K/mo, Popsixle is cheaper. Both tools work.</p></div>
+        <summary><span class="faq-num">08</span><span class="faq-q" data-i18n="faq8Q">How are you different from Popsixle?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq8A">Popsixle pioneered this space and built a great product. Our differences are in pricing and simplicity: we charge a flat monthly rate instead of base-plus-usage, and we handle unlimited revenue at the Scale tier. For most brands above $100K/mo in tracked revenue, we cost meaningfully less. For brands below $25K/mo, Popsixle is cheaper. Both tools work.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">09</span><span class="faq-q">What about PII and privacy?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>All user data is hashed with SHA-256 before it reaches Meta. We never store raw PII longer than 24 hours. Events are sent via Conversions API using your pixel access token, not a user login. We support GDPR and CCPA deletion requests. SOC 2 certification is in progress.</p></div>
+        <summary><span class="faq-num">09</span><span class="faq-q" data-i18n="faq9Q">What about PII and privacy?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq9A">All user data is hashed with SHA-256 before it reaches Meta. We never store raw PII longer than 24 hours. Events are sent via Conversions API using your pixel access token, not a user login. We support GDPR and CCPA deletion requests. SOC 2 certification is in progress.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">10</span><span class="faq-q">How does the revenue bracket work?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>We look at the gross revenue from Purchase events we process for you each month. If you stay inside your bracket, your bill doesn't change. If you consistently exceed it (two months in a row), we'll reach out and recommend upgrading. Nobody gets a surprise bill or a throttled pixel.</p></div>
+        <summary><span class="faq-num">10</span><span class="faq-q" data-i18n="faq10Q">How does the revenue bracket work?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq10A">We look at the gross revenue from Purchase events we process for you each month. If you stay inside your bracket, your bill doesn't change. If you consistently exceed it (two months in a row), we'll reach out and recommend upgrading. Nobody gets a surprise bill or a throttled pixel.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">11</span><span class="faq-q">Is there a free trial?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>We don't run a time-limited free trial. Instead, every prospect gets a free 20-minute compliance review with our team before signing up — we audit your domain, pixel, and Meta account health, and tell you honestly whether we can help. If you do sign up, we offer a 14-day money-back guarantee on your first month.</p></div>
+        <summary><span class="faq-num">11</span><span class="faq-q" data-i18n="faq11Q">Is there a free trial?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq11A">We don't run a time-limited free trial. Instead, every prospect gets a free 20-minute compliance review with our team before signing up — we audit your domain, pixel, and Meta account health, and tell you honestly whether we can help. If you do sign up, we offer a 14-day money-back guarantee on your first month.</p></div>
       </details>
       <details>
-        <summary><span class="faq-num">12</span><span class="faq-q">Is this a policy workaround?</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>No. We remove restricted terms from event payloads and route events from a compliant domain. That's policy alignment and privacy-aware data delivery, both explicitly supported by Meta's own Conversions API specification. We don't spoof conversions, fake identities, or send disallowed data.</p></div>
+        <summary><span class="faq-num">12</span><span class="faq-q" data-i18n="faq12Q">Is this a policy workaround?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p data-i18n="faq12A">No. We remove restricted terms from event payloads and route events from a compliant domain. That's policy alignment and privacy-aware data delivery, both explicitly supported by Meta's own Conversions API specification. We don't spoof conversions, fake identities, or send disallowed data.</p></div>
       </details>
     </div>
   </div>
@@ -1015,31 +1057,31 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     <span class="cta-glow"></span>
   </div>
   <div class="container cta-inner">
-    <span class="eyebrow eyebrow--on-dark">Get started</span>
-    <h2 class="cta-headline">Let's look at your setup together.</h2>
-    <p class="cta-sub">Book a free 20-minute compliance review. A member of our team will audit your domain, landing page, pixel setup, and current Meta account health. You'll walk away with a clear picture of where you stand and exactly what needs to change, whether you work with us or not.</p>
+    <span class="eyebrow eyebrow--on-dark" data-i18n="ctaEyebrow">Get started</span>
+    <h2 class="cta-headline" data-i18n="ctaH2">Let's look at your setup together.</h2>
+    <p class="cta-sub" data-i18n="ctaSub">Book a free 20-minute compliance review. A member of our team will audit your domain, landing page, pixel setup, and current Meta account health. You'll walk away with a clear picture of where you stand and exactly what needs to change, whether you work with us or not.</p>
 
     <div class="cta-action">
-      <a class="btn btn-cta btn-lg" href="#book" data-book-call>Book a free compliance review →</a>
+      <a class="btn btn-cta btn-lg" href="#book" data-book-call data-i18n="ctaBtn">Book a free compliance review →</a>
     </div>
-    <p class="cta-micro">20 minutes. No sales pressure. You'll get real answers either way.</p>
+    <p class="cta-micro" data-i18n="ctaMicro">20 minutes. No sales pressure. You'll get real answers either way.</p>
 
     <ul class="cta-reassure" role="list">
       <li>
         <span class="cta-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span>Real audit by our compliance team, not a sales rep</span>
+        <span data-i18n="ctaR1">Real audit by our compliance team, not a sales rep</span>
       </li>
       <li>
         <span class="cta-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span>Specific findings you can act on, with or without us</span>
+        <span data-i18n="ctaR2">Specific findings you can act on, with or without us</span>
       </li>
       <li>
         <span class="cta-check" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span>Pick a time that works for you</span>
+        <span data-i18n="ctaR3">Pick a time that works for you</span>
       </li>
     </ul>
 
-    <p class="cta-secondary">
+    <p class="cta-secondary" data-i18n="ctaSecondary">
       Not ready for a call? <a href="mailto:hello@savemypixel.com" class="cta-secondary-link">Email hello@savemypixel.com</a> and tell us what's going on.
     </p>
   </div>
@@ -1058,69 +1100,69 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     </button>
 
     <div class="book-head">
-      <span class="eyebrow">Free compliance review</span>
-      <h2 class="book-title" id="bookCallTitle">Book your 20-minute call.</h2>
-      <p class="book-sub" id="bookCallSub">A real audit of your domain, landing page, and pixel setup. No sales pressure — clear answers either way.</p>
+      <span class="eyebrow" data-i18n="bookEyebrow">Free compliance review</span>
+      <h2 class="book-title" id="bookCallTitle" data-i18n="bookTitle">Book your 20-minute call.</h2>
+      <p class="book-sub" id="bookCallSub" data-i18n="bookSub">A real audit of your domain, landing page, and pixel setup. No sales pressure — clear answers either way.</p>
     </div>
 
     <form class="book-form" data-book-form novalidate>
       <div class="book-row">
         <div class="book-field">
-          <label class="book-label" for="bf-name">Name</label>
-          <input class="book-input" id="bf-name" name="name" type="text" required autocomplete="name" placeholder="Your full name">
+          <label class="book-label" for="bf-name" data-i18n="bookLabelName">Name</label>
+          <input class="book-input" id="bf-name" name="name" type="text" required autocomplete="name" data-i18n-placeholder="bookPlaceholderName" placeholder="Your full name">
           <span class="book-error" data-error-for="name"></span>
         </div>
       </div>
 
       <div class="book-row book-row--two">
         <div class="book-field">
-          <label class="book-label" for="bf-phone">Phone</label>
-          <input class="book-input" id="bf-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+1 (555) 555-1234">
+          <label class="book-label" for="bf-phone" data-i18n="bookLabelPhone">Phone</label>
+          <input class="book-input" id="bf-phone" name="phone" type="tel" required autocomplete="tel" data-i18n-placeholder="bookPlaceholderPhone" placeholder="+1 (555) 555-1234">
           <span class="book-error" data-error-for="phone"></span>
         </div>
         <div class="book-field">
-          <label class="book-label" for="bf-email">Email</label>
-          <input class="book-input" id="bf-email" name="email" type="email" required autocomplete="email" placeholder="you@brand.com">
+          <label class="book-label" for="bf-email" data-i18n="bookLabelEmail">Email</label>
+          <input class="book-input" id="bf-email" name="email" type="email" required autocomplete="email" data-i18n-placeholder="bookPlaceholderEmail" placeholder="you@brand.com">
           <span class="book-error" data-error-for="email"></span>
         </div>
       </div>
 
       <div class="book-field">
-        <span class="book-label">Monthly revenue <span class="book-label-hint">USD</span></span>
+        <span class="book-label"><span data-i18n="bookLabelRevenue">Monthly revenue</span> <span class="book-label-hint" data-i18n="bookRevenueHint">USD</span></span>
         <div class="book-chips" role="radiogroup" aria-label="Monthly revenue">
           <label class="book-chip">
             <input type="radio" name="revenue" value="0-50K" required>
-            <span>$0 – $50K</span>
+            <span data-i18n="bookRev1">$0 – $50K</span>
           </label>
           <label class="book-chip">
             <input type="radio" name="revenue" value="50-100K">
-            <span>$50K – $100K</span>
+            <span data-i18n="bookRev2">$50K – $100K</span>
           </label>
           <label class="book-chip">
             <input type="radio" name="revenue" value="100-300K">
-            <span>$100K – $300K</span>
+            <span data-i18n="bookRev3">$100K – $300K</span>
           </label>
           <label class="book-chip">
             <input type="radio" name="revenue" value="300K+">
-            <span>$300K+</span>
+            <span data-i18n="bookRev4">$300K+</span>
           </label>
         </div>
         <span class="book-error" data-error-for="revenue"></span>
       </div>
 
       <div class="book-field">
-        <label class="book-label" for="bf-industry">Industry</label>
+        <label class="book-label" for="bf-industry" data-i18n="bookLabelIndustry">Industry</label>
         <div class="book-select-wrap">
           <select class="book-input book-select" id="bf-industry" name="industry" required>
-            <option value="" disabled selected>Select your category</option>
-            <option value="peptides">Peptides</option>
-            <option value="glp1">GLP-1 / weight loss</option>
-            <option value="supplements">Supplements &amp; nootropics</option>
-            <option value="hormones">Hormones &amp; testosterone</option>
-            <option value="sleep">Sleep &amp; recovery</option>
-            <option value="performance">Performance &amp; fitness</option>
-            <option value="functional-nutrition">Functional nutrition</option>
-            <option value="other">Other regulated health &amp; wellness</option>
+            <option value="" disabled selected data-i18n="bookIndustryPlaceholder">Select your category</option>
+            <option value="peptides" data-i18n="bookInd1">Peptides</option>
+            <option value="glp1" data-i18n="bookInd2">GLP-1 / weight loss</option>
+            <option value="supplements" data-i18n="bookInd3">Supplements &amp; nootropics</option>
+            <option value="hormones" data-i18n="bookInd4">Hormones &amp; testosterone</option>
+            <option value="sleep" data-i18n="bookInd5">Sleep &amp; recovery</option>
+            <option value="performance" data-i18n="bookInd6">Performance &amp; fitness</option>
+            <option value="functional-nutrition" data-i18n="bookInd7">Functional nutrition</option>
+            <option value="other" data-i18n="bookInd8">Other regulated health &amp; wellness</option>
           </select>
           <svg class="book-select-caret" viewBox="0 0 12 8" width="12" height="8" aria-hidden="true">
             <path d="M1 1.5 L6 6.5 L11 1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1130,7 +1172,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       </div>
 
       <button class="btn btn-primary btn-lg book-submit" type="submit">
-        <span class="book-submit-label">Book my compliance review →</span>
+        <span class="book-submit-label" data-i18n="bookSubmit">Book my compliance review →</span>
         <span class="book-submit-spinner" aria-hidden="true"></span>
       </button>
 
@@ -1138,7 +1180,7 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
         <span class="book-check" aria-hidden="true">
           <svg viewBox="0 0 16 16" width="11" height="11"><path d="M3 8.5 L6.5 12 L13 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        20-min call · No commitment · Your details aren't shared
+        <span data-i18n="bookFineprint">20-min call · No commitment · Your details aren't shared</span>
       </p>
     </form>
 
@@ -1146,9 +1188,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       <div class="book-success-mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="28" height="28"><path d="M5 12.5 L10 17.5 L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <h3 class="book-success-title">Got it. We'll be in touch.</h3>
-      <p class="book-success-sub">Our compliance team will email you within one business day with a few time options for your review call.</p>
-      <button class="btn btn-secondary" type="button" data-book-close>Close</button>
+      <h3 class="book-success-title" data-i18n="bookSuccessTitle">Got it. We'll be in touch.</h3>
+      <p class="book-success-sub" data-i18n="bookSuccessSub">Our compliance team will email you within one business day with a few time options for your review call.</p>
+      <button class="btn btn-secondary" type="button" data-book-close data-i18n="bookSuccessClose">Close</button>
     </div>
   </div>
 </div>
@@ -1161,44 +1203,44 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
         <a class="brand" href="#top" aria-label="SaveMyPixel home">
           <img class="brand-logo" src="assets/logo.png?v=2" alt="SaveMyPixel" width="180" height="36">
         </a>
-        <p class="small" style="margin-top:16px; max-width:320px">Compliance infrastructure for paid social. Server-side routing, event delivery, and audit tooling for regulated consumer brands.</p>
+        <p class="small" style="margin-top:16px; max-width:320px" data-i18n="footerDesc">Compliance infrastructure for paid social. Server-side routing, event delivery, and audit tooling for regulated consumer brands.</p>
       </div>
       <div>
-        <h4>Product</h4>
+        <h4 data-i18n="footerProduct">Product</h4>
         <ul>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#docs">Docs</a></li>
+          <li><a href="#how" data-i18n="footerHiw">How it works</a></li>
+          <li><a href="#features" data-i18n="footerFeatures">Features</a></li>
+          <li><a href="#pricing" data-i18n="footerPricing">Pricing</a></li>
+          <li><a href="#docs" data-i18n="footerDocs">Docs</a></li>
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
+        <h4 data-i18n="footerCompany">Company</h4>
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#security">Security</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" data-i18n="footerAbout">About</a></li>
+          <li><a href="#security" data-i18n="footerSecurity">Security</a></li>
+          <li><a href="#contact" data-i18n="footerContact">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h4 data-i18n="footerLegal">Legal</h4>
         <ul>
-          <li><a href="#terms">Terms</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-          <li><a href="#dpa">DPA</a></li>
+          <li><a href="#terms" data-i18n="footerTerms">Terms</a></li>
+          <li><a href="#privacy" data-i18n="footerPrivacy">Privacy</a></li>
+          <li><a href="#dpa" data-i18n="footerDpa">DPA</a></li>
         </ul>
       </div>
       <div>
-        <h4>Status</h4>
+        <h4 data-i18n="footerStatus">Status</h4>
         <ul>
           <li><a href="#status"><span class="badge ok" style="padding:2px 8px">operational</span></a></li>
-          <li><a href="#changelog">Changelog</a></li>
+          <li><a href="#changelog" data-i18n="footerChangelog">Changelog</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 savemypixel inc.</span>
-      <span>not affiliated with meta platforms, inc.</span>
+      <span data-i18n="footerCopyright">© 2026 savemypixel inc.</span>
+      <span data-i18n="footerDisclaimer">not affiliated with meta platforms, inc.</span>
     </div>
   </div>
 </footer>
