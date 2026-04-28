@@ -619,17 +619,23 @@
   };
 
   // ─── Boot ──────────────────────────────────────────────────────────────────
-  // Apply immediately from cache/browser hint (no flicker for returning users)
-  const cached = localStorage.getItem(LS_KEY);
-  const browserHint = (navigator.language || '').toLowerCase().startsWith('pt') ? 'pt' : null;
-  applyLocale(cached || browserHint || 'en');
+  const cached = localStorage.getItem(LS_KEY); // only set when user clicks a flag
 
-  // Then confirm/override with IP detection (async, only if no saved preference)
-  if (!cached) {
-    resolveLocale().then((lang) => {
-      if (lang !== (browserHint || 'en')) {
-        applyLocale(lang);
-      }
-    });
+  if (cached) {
+    // User explicitly chose a language — respect it always
+    applyLocale(cached);
+  } else {
+    // No explicit choice: apply browser hint immediately (avoids blank flash),
+    // then override with geo result as soon as it arrives
+    const browserHint = (navigator.language || '').toLowerCase().startsWith('pt') ? 'pt' : 'en';
+    applyLocale(browserHint);
+
+    fetch('/api/geo', { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((data) => {
+        const geoLang = data.locale === 'pt' || data.locale === 'en' ? data.locale : null;
+        if (geoLang && geoLang !== browserHint) applyLocale(geoLang);
+      })
+      .catch(() => {});
   }
 })();
